@@ -12,4 +12,4 @@ function add_prefix(items)
     return result
 end
 
-mod.items = add_prefix{'wooden-chest', 'iron-chest', 'steel-chest'}
+mod.containers = add_prefix{'wooden-chest', 'iron-chest', 'steel-chest'}
