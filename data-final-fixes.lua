@@ -4,6 +4,7 @@ require 'defines'
 for vanilla_item, item in pairs(mod.containers) do
     local entity_prototype = util.table.deepcopy(data.raw.container[vanilla_item])
     local item_prototype = util.table.deepcopy(data.raw.item[vanilla_item])
+    local recipe_prototype = data.raw.recipe[vanilla_item]
 
     entity_prototype.name = item
     entity_prototype.minable.result = item
@@ -35,11 +36,17 @@ for vanilla_item, item in pairs(mod.containers) do
         {
             type = 'recipe',
             name = item,
-            enabled = true,
+            enabled = recipe_prototype.enabled,
             result = item,
             ingredients = {
-                { vanilla_item, 10 },
+                { vanilla_item, 1 },
+                { 'electronic-circuit', entity_prototype.inventory_size },
             },
         },
     }
 end
+
+table.insert(data.raw.technology['steel-processing'].effects, {
+    type = 'unlock-recipe',
+    recipe = mod.containers['steel-chest'],
+})
