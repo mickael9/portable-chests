@@ -41,7 +41,7 @@ script.on_event(defines.events.on_put_item, function(event)
     local stack = player.cursor_stack
     local position = event.position
 
-    if not our_item(stack.name) or not stack.valid_for_read then
+    if not stack.valid_for_read or not our_item(stack.name) then
         return
     end
 
