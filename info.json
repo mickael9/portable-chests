@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"title": "Portable chests",
 	"author": "mickael9",
-	"homepage": "https://github.com/mickael9/cut-and-paste",
+	"homepage": "https://github.com/mickael9/portable-chests",
 	"description": "Portable chests can be carried around like regular items and their inventory can be accessed with a right click",
 	"factorio_version": "0.15",
 	"dependencies": ["base >= 0.15.12"]
