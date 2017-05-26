@@ -10,6 +10,26 @@ function our_item(name)
     return name:match('^' .. mod.prefix:gsub('[^%w]', '%%%0'))
 end
 
+
+function init()
+    for name, force in pairs(game.forces) do
+        for tech, recipes in pairs(mod.unlock_recipes) do
+            tech = force.technologies[tech]
+            local researched = tech and tech.researched
+
+            if tech.researched then
+                for _, recipe in pairs(recipes) do
+                    recipe = force.recipes[recipe]
+                    recipe.enabled = true
+                end
+            end
+        end
+    end
+end
+
+script.on_init(init)
+script.on_configuration_changed(init)
+
 script.on_event(defines.events.on_preplayer_mined_item, function(event)
     local entity = event.entity
     local player = game.players[event.player_index]
