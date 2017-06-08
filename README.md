@@ -15,6 +15,10 @@ Portable chests have the following properties:
 
 ## Changelog
 
+**0.1.3**:
+ - Fix lost items and chest when mining a portable chest without space in inventory.
+   The chest is now spilled as expected.
+
 **0.1.2**:
  - Make sure the steel chest recipe is enabled when loading an existing save
    without the mod and with steel processing already researched.

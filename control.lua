@@ -50,9 +50,14 @@ script.on_event(defines.events.on_preplayer_mined_item, function(event)
     local temp_inv = temp_entity.stack.get_inventory(defines.inventory.chest)
 
     transfer_inventory(entity_inv, temp_inv)
-    player.insert(temp_entity.stack)
 
-    temp_entity.destroy()
+    if player.can_insert(temp_entity.stack) then
+        player.insert(temp_entity.stack)
+        temp_entity.destroy()
+    else
+        player.print({'inventory-restriction.player-inventory-full', temp_entity.stack.prototype.localised_name})
+    end
+
     entity.destroy()
 end)
 
